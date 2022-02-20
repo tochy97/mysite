@@ -8,7 +8,7 @@ function NavComp(props) {
                 <Link class="col-span-1 w-1/8 px-9 h-full hover:underline focus:underline active:underline underline-offset-8" to="/">Home</Link>
             </div>
             <div class="flex justify-end">
-                <Link class="col-span-1 col-start-2 w-1/8 px-9 place-content-center h-full hover:underline focus:underline active:underline underline-offset-8" to="login">Login</Link>
+                <Link class="col-span-1 col-start-2 w-1/8 px-9 place-content-center h-full hover:underline focus:underline active:underline underline-offset-8 transition duration-500" to="login">Login</Link>
             </div>
         </nav>
     );

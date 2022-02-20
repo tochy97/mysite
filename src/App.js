@@ -8,11 +8,13 @@ import {
 } from "react-router-dom";
 import Footer from "./components/Footer";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import NotFound from "./pages/Error/NotFound";
+import Blog from "./pages/Dashboard/Blog";
 
 function App() {
   return (
     <>
-      <div class="my-36 w-screen">
+      <main class="my-36 w-screen">
       <BrowserRouter>
         <NavComp/>
         <Footer/>
@@ -20,9 +22,11 @@ function App() {
           <Route path="/" element={<Dashboard/>}/>
           <Route path="login" element={<Login/>}/>
           <Route path="signup" element={<Signup/>}/>
+          <Route path="blog" element={<Blog/>}/>
+          <Route path="/*" element={<NotFound/>}/>
         </Routes>
       </BrowserRouter>
-      </div>
+      </main>
     </>
   );
 }

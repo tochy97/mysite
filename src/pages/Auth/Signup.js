@@ -11,6 +11,7 @@ function Signup() {
                 <input class="border border-gray-500 rounded py-3 px-4 mb-3 lg:col-start-4 lg:col-span-1 col-start-2 col-span-4" type="text" id="lname" name="lname" placeholder='Last Name'/>
                 <input class="border border-gray-500 rounded py-3 px-4 mb-3 lg:col-start-3 lg:col-span-2 col-start-2 col-span-4" type="password" id="pword" name="pword" placeholder='Password'/>
                 <input class="border border-gray-500 rounded py-3 px-4 mb-3 lg:col-start-3 lg:col-span-2 col-start-2 col-span-4" type="password" id="cpword" name="cpword" placeholder='Confirm Password'/>
+                <button class="border border-gray-300 rounded py-3 mb-3 lg:col-start-3 lg:col-span-2 col-start-2 col-span-4 hover:border-2 hover:underline underline-offset-8" type='submit'>Signup</button>
                 <p class="lg:col-start-3 lg:col-span-2 col-start-2 col-span-4">Have an account - <Link to="../login" class="hover:underline">Login</Link></p>
             </form>
         </div>
