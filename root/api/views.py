@@ -7,7 +7,9 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.http import Http404
-from .serializer import UserSerializer, UserSerializerWithToken
+
+from .models import Post
+from .serializer import UserSerializer, UserSerializerWithToken, PostSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
@@ -15,6 +17,13 @@ class UserViewSet(viewsets.ModelViewSet):
         permissions.IsAuthenticated
     ]
     serializer_class = UserSerializer
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    permissions_classes = [ 
+        permissions.IsAuthenticated
+    ]
+    serializer_class = PostSerializer
 
 @api_view(['GET'])
 def current_user(request):

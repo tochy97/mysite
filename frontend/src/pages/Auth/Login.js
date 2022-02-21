@@ -44,7 +44,7 @@ function Login() {
     return (
         <div class="grid gap-4 grid-cols-6 w-full">
             <p class="text-7xl text-center col-start-2 col-span-4">Login</p>         
-            <div class="col-span-6 grid gap-4 grid-cols-6">
+            <form class="col-span-6 grid gap-4 grid-cols-6" onSubmit={handleSubmit}>
                 <input class="border border-gray-300 rounded py-3 px-4 mb-3 lg:col-start-3 lg:col-span-2 col-start-2 col-span-4" type="text" id="user" name="user" placeholder='Username or Email' value={username} onChange={e => setUsername(e.target.value)}/>
                 <div class="lg:col-start-3 lg:col-span-2 col-start-2 col-span-4 flex border-2 border-gray-200 hover:border-gray-300 rounded">
                     <input type={passwordShown ? "text" : "password"}  class="px-4 py-2 w-64 flex-1" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
@@ -52,9 +52,9 @@ function Login() {
                         {passwordShown ? <AiFillEye/> : <AiOutlineEyeInvisible/>}
                     </div>
                 </div>
-                <button class="border border-gray-300 rounded py-3 mb-3 lg:col-start-3 lg:col-span-2 col-start-2 col-span-4 hover:border-2 hover:underline underline-offset-8" onClick={handleSubmit}>Login</button>
+                <button type='submit' class="border border-gray-300 rounded py-3 mb-3 lg:col-start-3 lg:col-span-2 col-start-2 col-span-4 hover:border-2 hover:underline underline-offset-8">Login</button>
                 <p class="lg:col-start-3 lg:col-span-2 col-start-2 col-span-4">Need an account - <Link to="../signup" class="hover:underline">Signup</Link></p>
-            </div>
+            </form>
         </div>
     );
 }

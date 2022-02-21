@@ -6,6 +6,7 @@ import { logoutUser } from '../redux/actionCreators/authActionCreators';
 function NavComp(props) {
     const dispatch = useDispatch();
     const histroy = useNavigate(); 
+    const pathname = window.location.pathname
 
     const { user } = useSelector(
       (state) =>({
@@ -38,9 +39,17 @@ function NavComp(props) {
                 <div id="nav-home" class="flex justify-center">
                     Welcome, guest
                 </div>
-                <div id="nav-login" class="flex justify-end">
-                    <Link class="col-span-1 col-start-3 w-1/8 px-9 place-content-center h-full hover:underline focus:underline active:underline underline-offset-8 transition duration-500" to="login">Login</Link>
-                </div>
+                {
+                    pathname.includes("signup")
+                    ?
+                    <div id="nav-login" class="flex justify-end">
+                        <Link class="col-span-1 col-start-3 w-1/8 px-9 place-content-center h-full hover:underline focus:underline active:underline underline-offset-8 transition duration-500" to="login">Login</Link>
+                    </div>
+                    :
+                    <div id="nav-signup" class="flex justify-end">
+                        <Link class="col-span-1 col-start-3 w-1/8 px-9 place-content-center h-full hover:underline focus:underline active:underline underline-offset-8 transition duration-500" to="signup">Signup</Link>
+                    </div>
+                }
                 </>
             }
         </nav>
