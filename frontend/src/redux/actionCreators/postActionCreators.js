@@ -94,3 +94,24 @@ export const removePost = ( postID ) => async dispatch => {
         alert(info.error);
     })
 }
+
+export const editPost = ( data, id ) => async dispatch => {
+    const form_data = JSON.stringify(data)
+    await axios.put(`http://127.0.0.1:8000/posts/${id}/`, form_data, {
+        headers:{
+            'Content-Type': 'application/json',
+            Authorization: `JWT ${localStorage.getItem('token')}`,
+        }
+    })
+    .then(() => {
+        dispatch(fetchPosts());
+    })
+    .catch(err => {
+        const info= {
+            error:"Failed to delete class",
+            status:err.response.status
+        }
+        dispatch(setError(info));
+        alert(info.error);
+    })
+}

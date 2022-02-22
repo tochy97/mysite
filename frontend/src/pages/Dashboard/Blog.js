@@ -59,7 +59,11 @@ function Blog(props) {
                         <p class="pt-1 pb-3 px-3">Description: {myPost.description}</p>
                     </div>
                     <div id="blog-content" class="border-b-2 border-solid border-gray-400">
-                        <ReactQuill value={myPost.content || ''} readOnly={true} theme={"bubble"}/>
+                        <ReactQuill 
+                            value={myPost.content || ''} 
+                            readOnly={true} 
+                            theme={"bubble"}
+                        />
                     </div>
                 </div>
             :

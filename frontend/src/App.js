@@ -15,10 +15,11 @@ import Loading from "./pages/Error/Loading";
 import LeftPanel from "./components/LeftPanel";
 import { fetchPosts, fetchPostsNoUser } from "./redux/actionCreators/postActionCreators";
 import Manage from "./pages/Admin/Manage";
+import Edit from "./pages/Admin/Edit";
 
 function App() {
   const dispatch = useDispatch();    
-  
+
   const [pathname,setPathname] = useState(window.location.pathname)
 
   const { isLoggedIn, user, status, allowed, mounted } = useSelector(
@@ -38,7 +39,7 @@ function App() {
       if(!isLoggedIn || !pathname.includes("/")){
           dispatch(checkUser());
       }
-      if(pathname === "/" || pathname.includes("home") || pathname.includes("blog") || pathname.includes("manage")){
+      if(pathname === "/" || pathname.includes("home") || pathname.includes("blog") || pathname.includes("manage") || pathname.includes("edit")){
         dispatch(setMount(true));
         dispatch(fetchPostsNoUser())
       }
@@ -65,6 +66,7 @@ function App() {
               <Route path="blog/*" element={<Blog/>}/>
               <Route path="add" element={<Add/>}/>
               <Route path="manage" element={<Manage/>}/>
+              <Route path="edit/*" element={<Edit/>}/>
               <Route path="/*" element={<NotFound/>}/>
             </Routes>
           :
