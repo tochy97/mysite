@@ -38,7 +38,7 @@ export const checkUser = ()  => async dispatch=>{
         }
         const data = {
             user:user,
-            status:101
+            status:101,
         }
         dispatch(setUser(data));
     })
@@ -98,6 +98,7 @@ export const createUser = (data) =>  async dispatch=>{
             status:403
         }
         dispatch(setError(info))
+        alert(info.error)
     });
 }
 
@@ -123,5 +124,6 @@ export const updateUser = ( data, id ) => async dispatch => {
             status:404
         }
         dispatch(setError(info));
+        alert(info.error);
     })
 }

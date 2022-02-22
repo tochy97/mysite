@@ -9,15 +9,18 @@ import Blog from "./pages/Dashboard/Blog";
 import Add from "./pages/Admin/Add";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { checkUser } from "./redux/actionCreators/authActionCreators";
+import { checkUser, setMount } from "./redux/actionCreators/authActionCreators";
 import LoggedIn from "./pages/Error/LoggedIn";
 import Loading from "./pages/Error/Loading";
 import LeftPanel from "./components/LeftPanel";
 import { fetchPosts, fetchPostsNoUser } from "./redux/actionCreators/postActionCreators";
+import Manage from "./pages/Admin/Manage";
 
 function App() {
   const dispatch = useDispatch();    
+  
   const [pathname,setPathname] = useState(window.location.pathname)
+
   const { isLoggedIn, user, status, allowed, mounted } = useSelector(
     (state) =>({
       isLoggedIn:state.auth.isLoggedIn, 
@@ -31,11 +34,12 @@ function App() {
 
   useEffect(() => {
     setPathname(window.location.pathname)
-      if(!isLoggedIn){
-        console.log("1")
+    console.log(pathname)
+      if(!isLoggedIn || !pathname.includes("/")){
           dispatch(checkUser());
       }
-      if(pathname === "/" || pathname.includes("home") || pathname.includes("blog")){
+      if(pathname === "/" || pathname.includes("home") || pathname.includes("blog") || pathname.includes("manage")){
+        dispatch(setMount(true));
         dispatch(fetchPostsNoUser())
       }
   }, [isLoggedIn,dispatch,pathname, setPathname]);
@@ -45,7 +49,6 @@ function App() {
       <main class="lg:m-36 my-36 m-10 self-start content-start flex-wrap">{
       <BrowserRouter>
         <NavComp/>
-        <Footer/>
         <LeftPanel/>
         {
           !mounted
@@ -56,17 +59,18 @@ function App() {
           ?
             <Routes>
               <Route path="/" element={<Dashboard/>}/>
-              <Route path="/home" element={<Dashboard/>}/>
+              <Route path="home" element={<Dashboard/>}/>
               <Route path="login" element={<LoggedIn/>}/>
               <Route path="signup" element={<LoggedIn/>}/>
               <Route path="blog/*" element={<Blog/>}/>
               <Route path="add" element={<Add/>}/>
+              <Route path="manage" element={<Manage/>}/>
               <Route path="/*" element={<NotFound/>}/>
             </Routes>
           :
             <Routes>
               <Route path="/" element={<Login/>}/>
-              <Route path="/home" element={<Dashboard/>}/>
+              <Route path="home" element={<Dashboard/>}/>
               <Route path="login" element={<Login/>}/>
               <Route path="signup" element={<Signup/>}/>
               <Route path="blog/*" element={<Blog/>}/>

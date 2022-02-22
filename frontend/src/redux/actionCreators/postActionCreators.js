@@ -31,6 +31,7 @@ export const fetchPosts = () => async dispatch => {
             status:err.response.status
         }
         dispatch(setError(info));
+        alert(info.error);
     })
 }
 
@@ -49,6 +50,7 @@ export const fetchPostsNoUser = () => async dispatch => {
             status:err.response.status
         }
         dispatch(setError(info));
+        alert(info.error);
     })
 }
 
@@ -69,6 +71,7 @@ export const newPost = ( data ) => async dispatch => {
             status:err.response.status
         }
         dispatch(setError(info));
+        alert(info.error);
     })
 }
 
@@ -85,8 +88,9 @@ export const removePost = ( postID ) => async dispatch => {
     .catch(err => {
         const info= {
             error:"Failed to delete class",
-            status:502
+            status:err.response.status
         }
         dispatch(setError(info));
+        alert(info.error);
     })
 }

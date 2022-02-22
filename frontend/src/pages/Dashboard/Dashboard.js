@@ -18,7 +18,7 @@ function Dashboard(props) {
                 ?
                     posts.map((pst, index) => (
                         <Link to={`../blog/${pst.id}`}>
-                            <div id="preview" class="max-h-96 overflow-hidden border-solid border-2 border-gray-300 rounded hover:shadow-2xl hover:border-gray-400 cursor-pointer transition duration-500 ">
+                            <div id="preview" class="max-h-96 overflow-hidden border-solid border-4 border-gray-300 rounded hover:shadow-2xl hover:border-gray-400 cursor-pointer transition duration-500 ">
                                 <Blog post={pst}/>
                             </div>
                         </Link>

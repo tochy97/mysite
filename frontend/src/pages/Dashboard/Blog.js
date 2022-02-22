@@ -1,28 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.bubble.css'
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 import Loading from '../Error/Loading';
 
 function Blog(props) {
     const [myPost,setMyPost] = useState([]);
+
     const postId = window.location.pathname.split("/")[2];
+
     const { posts } = useSelector(
       (state) =>({
         posts:state.posts.posts, 
     }), shallowEqual);
-    console.log(myPost)
+    
     useEffect(() => {
         if(posts && postId){
             setMyPost(posts.find( ({ id }) => id === parseInt(postId) ))
         }
     }, [posts,postId,setMyPost,myPost]);
+
     return (
         <>
         {
             props.post
             ?
-                <div id="blog" class="grid grid-row rounded">
+                <div id="blog" class="grid grid-row rounded bg-white">
                     <div id="blog-title" class="p-5 border-b-2 border-solid border-gray-400">
                         <p class="text-5xl text-center">{props.post.title}</p>
                     </div>
@@ -33,11 +36,13 @@ function Blog(props) {
                         <p class="pt-1 pb-3 px-3">Description: {props.post.description}</p>
                     </div>
                     <div id="blog-content" class="border-b-2 border-solid border-gray-400">
-                        <ReactQuill
-                            value={props.post.content || ''}
-                            readOnly={true}
-                            theme={"bubble"}
-                        />
+                        {
+                            !window.location.pathname.includes("manage")
+                            ?
+                            <ReactQuill value={props.post.content || ''} readOnly={true} theme={"bubble"}/>
+                            :
+                            <></>
+                        }
                     </div>
                 </div>
             :
@@ -54,11 +59,7 @@ function Blog(props) {
                         <p class="pt-1 pb-3 px-3">Description: {myPost.description}</p>
                     </div>
                     <div id="blog-content" class="border-b-2 border-solid border-gray-400">
-                        <ReactQuill
-                            value={myPost.content || ''}
-                            readOnly={true}
-                            theme={"bubble"}
-                        />
+                        <ReactQuill value={myPost.content || ''} readOnly={true} theme={"bubble"}/>
                     </div>
                 </div>
             :
