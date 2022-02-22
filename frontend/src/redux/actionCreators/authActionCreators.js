@@ -28,7 +28,6 @@ export const checkUser = ()  => async dispatch=>{
         }
     })
     .then(res => {
-        console.log(res)
         const user = {
             id:res.data.id,
             username:res.data.username,

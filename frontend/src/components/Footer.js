@@ -1,13 +1,13 @@
 import React from 'react';
 import useCollapse from 'react-collapsed';
-import { TiArrowSortedDown } from "react-icons/ti"
+import { MdKeyboardArrowDown } from "react-icons/md";
 
-function Footer(props) {
+function Footer() {
     const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     return (
-        <footer id="footer" class="fixed bottom-0 left-0 right-0 w-full bg-white border-solid border-t-2 border-gray-300 grid grid-col-1">
+        <footer id="footer" class="fixed bottom-0 left-0 right-0 w-full bg-white border-solid border-t-2 border-gray-300 grid grid-col-1 z-20 transition ease-in-out delay-150">
                 <div class="justify-self-center" {...getToggleProps()}>
-                    {isExpanded ? <TiArrowSortedDown size="3em"/>: <div class="p-3">Click to Search</div>}
+                    {isExpanded ? <MdKeyboardArrowDown size="3em"/>: <div class="p-3">Click to Search</div>}
                 </div>
                 <div {...getCollapseProps()}>
                     <div class="col-start-6 lg:flex my-5 lg:items-center lg:justify-center ">

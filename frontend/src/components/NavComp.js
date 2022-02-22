@@ -19,7 +19,7 @@ function NavComp(props) {
         histroy("../", {replace:true});
     }
     return (
-        <nav id="nav" class="fixed top-0 left-0 right-0 opacity-100 bg-white grid grid-cols-3 gap-0 shadow-md w-full py-7 ">
+        <nav id="nav" class="fixed top-0 left-0 right-0 opacity-100 bg-white grid grid-cols-3 gap-0 shadow-md w-full py-7 z-20">
             <div id="nav-home" class="flex justify-start">
                 <Link class="col-span-1 w-1/8 px-9 h-full hover:underline focus:underline active:underline underline-offset-8" to="/home">Home</Link>
             </div>
@@ -40,14 +40,14 @@ function NavComp(props) {
                     Welcome, guest
                 </div>
                 {
-                    pathname.includes("signup")
+                    pathname.includes("login") || pathname === "/"
                     ?
-                    <div id="nav-login" class="flex justify-end">
-                        <Link class="col-span-1 col-start-3 w-1/8 px-9 place-content-center h-full hover:underline focus:underline active:underline underline-offset-8 transition duration-500" to="login">Login</Link>
-                    </div>
-                    :
                     <div id="nav-signup" class="flex justify-end">
                         <Link class="col-span-1 col-start-3 w-1/8 px-9 place-content-center h-full hover:underline focus:underline active:underline underline-offset-8 transition duration-500" to="signup">Signup</Link>
+                    </div>
+                    :
+                    <div id="nav-login" class="flex justify-end">
+                        <Link class="col-span-1 col-start-3 w-1/8 px-9 place-content-center h-full hover:underline focus:underline active:underline underline-offset-8 transition duration-500" to="login">Login</Link>
                     </div>
                 }
                 </>

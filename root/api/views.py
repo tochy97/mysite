@@ -31,7 +31,6 @@ def current_user(request):
     serializer = UserSerializer(request.user)
     return Response(serializer.data)
 
-
 class CreateUser(APIView):
 
     permission_classes = (permissions.AllowAny,)

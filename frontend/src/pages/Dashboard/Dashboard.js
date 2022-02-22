@@ -1,26 +1,32 @@
 import React from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Loading from '../Error/Loading';
 import Blog from './Blog';
 
 function Dashboard(props) {
+
+    const { posts } = useSelector(
+      (state) =>({
+        posts:state.posts.posts, 
+    }), shallowEqual);
+
     return (
-        <main id="dashboard" class="grid grid-row gap-14">
-            <Link to="../blog">
-                <div id="preview" class="max-h-96 overflow-hidden border-solid border-2 border-gray-300 rounded hover:shadow-2xl hover:border-gray-400 cursor-pointer transition duration-500 " onClick={e => console.log("1")}>
-                    <Blog/>
-                </div>
-            </Link>
-            <Link to="../blog">
-                <div id="preview" class="max-h-96 overflow-hidden border-solid border-2 border-gray-300 rounded hover:shadow-2xl hover:border-gray-400 cursor-pointer transition duration-500 " onClick={e => console.log("1")}>
-                    <Blog/>
-                </div>
-            </Link>
-            <Link to="../blog">
-                <div id="preview" class="max-h-96 overflow-hidden border-solid border-2 border-gray-300 rounded hover:shadow-2xl hover:border-gray-400 cursor-pointer transition duration-500 " onClick={e => console.log("1")}>
-                    <Blog/>
-                </div>
-            </Link>
-        </main>
+        <div id="dashboard" class="grid grid-row gap-14 z-0">
+            {
+                posts
+                ?
+                    posts.map((pst, index) => (
+                        <Link to={`../blog/${pst.id}`}>
+                            <div id="preview" class="max-h-96 overflow-hidden border-solid border-2 border-gray-300 rounded hover:shadow-2xl hover:border-gray-400 cursor-pointer transition duration-500 ">
+                                <Blog post={pst}/>
+                            </div>
+                        </Link>
+                    ))
+                :
+                    <Loading/>
+            }
+        </div>
     );
 }
 
