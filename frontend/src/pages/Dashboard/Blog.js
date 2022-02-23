@@ -25,7 +25,7 @@ function Blog(props) {
         {
             props.post
             ?
-                <div id="blog" class="grid grid-row rounded bg-white">
+                <div id="blog" class="grid grid-row bg-white">
                     <div id="blog-title" class="p-5 border-b-2 border-solid border-gray-400">
                         <p class="text-5xl text-center">{props.post.title}</p>
                     </div>

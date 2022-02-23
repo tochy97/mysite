@@ -13,36 +13,29 @@ import { checkUser, setMount } from "./redux/actionCreators/authActionCreators";
 import LoggedIn from "./pages/Error/LoggedIn";
 import Loading from "./pages/Error/Loading";
 import LeftPanel from "./components/LeftPanel";
-import { fetchPosts, fetchPostsNoUser } from "./redux/actionCreators/postActionCreators";
+import { fetchPostsNoUser } from "./redux/actionCreators/postActionCreators";
 import Manage from "./pages/Admin/Manage";
 import Edit from "./pages/Admin/Edit";
+import Contact from "./pages/Dashboard/Contact";
 
 function App() {
   const dispatch = useDispatch();    
 
   const [pathname,setPathname] = useState(window.location.pathname)
 
-  const { isLoggedIn, user, status, allowed, mounted } = useSelector(
+  const { isLoggedIn, mounted } = useSelector(
     (state) =>({
       isLoggedIn:state.auth.isLoggedIn, 
-      user:state.auth.user, 
-      status:state.auth.status, 
-      allowed:state.auth.allowed,
       mounted:state.auth.mounted,
   }), shallowEqual);
 
-  console.log(mounted)
-
   useEffect(() => {
     setPathname(window.location.pathname)
-    console.log(pathname)
       if(!isLoggedIn || !pathname.includes("/")){
           dispatch(checkUser());
       }
-      if(pathname === "/" || pathname.includes("home") || pathname.includes("blog") || pathname.includes("manage") || pathname.includes("edit")){
-        dispatch(setMount(true));
-        dispatch(fetchPostsNoUser())
-      }
+      dispatch(setMount(true));
+      dispatch(fetchPostsNoUser())
   }, [isLoggedIn,dispatch,pathname, setPathname]);
 
   return (
@@ -51,6 +44,7 @@ function App() {
       <BrowserRouter>
         <NavComp/>
         <LeftPanel/>
+        <Footer/>
         {
           !mounted
           ?
@@ -67,6 +61,7 @@ function App() {
               <Route path="add" element={<Add/>}/>
               <Route path="manage" element={<Manage/>}/>
               <Route path="edit/*" element={<Edit/>}/>
+              <Route path="contact" element={<Contact/>}/>
               <Route path="/*" element={<NotFound/>}/>
             </Routes>
           :
@@ -76,6 +71,7 @@ function App() {
               <Route path="login" element={<Login/>}/>
               <Route path="signup" element={<Signup/>}/>
               <Route path="blog/*" element={<Blog/>}/>
+              <Route path="contact" element={<Contact/>}/>
               <Route path="/*" element={<NotFound/>}/>
             </Routes>
         }

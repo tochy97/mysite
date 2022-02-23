@@ -2,7 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import ReactQuill from "react-quill"
 import 'react-quill/dist/quill.snow.css'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { editPost, newPost } from '../../redux/actionCreators/postActionCreators';
+import { editPost } from '../../redux/actionCreators/postActionCreators';
 
 function Edit(props) {
     const [content, setContent] = useState("");
@@ -25,7 +25,7 @@ function Edit(props) {
         toolbar: {
             container: [
                 [{ 'header': [1, 2, 3, 4, 5, 6, false] }],  
-                [{ 'color': [] }]  
+                [{ 'color': [] }],
                 ['bold', 'italic', 'underline'],  
                 [{ 'list': 'ordered' }, { 'list': 'bullet' }],  
                 [{ 'align': [] }],  
@@ -41,7 +41,7 @@ function Edit(props) {
             setTitle(myPost.title);
             setDescription(myPost.description);
         }
-    }, [myPost, setMyPost, isSet, setMyPost, setContent, setTitle, setDescription, postId,  posts])
+    }, [myPost, isSet, postId,  posts])
 
     const handleSubmit = (e) => {
         const data = {

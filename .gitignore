@@ -7,7 +7,9 @@
 **/node_modules
 **/.pnp
 **/.pnp.js
-
+**/requirements.txt
+/root/.ebextensions
+/root/api/migrations
 # testing
 **/coverage
 

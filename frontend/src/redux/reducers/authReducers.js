@@ -24,10 +24,12 @@ const authReducers = (state=initialState, {type, payload})=>{
             state={ ...state,
                 mounted:payload
             }
+            return state;
         case SET_ALLOWED:
             state={ ...state,
                 allowed:payload
             }
+            return state;
         case SET_ERROR:
             state={ ...state,
                 mounted:true,

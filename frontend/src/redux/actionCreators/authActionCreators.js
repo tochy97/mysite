@@ -45,7 +45,7 @@ export const checkUser = ()  => async dispatch=>{
     .catch(err => {   
         localStorage.removeItem('token');
         const info= {
-            error:"You are notlogged in ",
+            error:"You are notlogged in",
             status:401
         }
         dispatch(setError(info));
@@ -62,11 +62,6 @@ export const loginUser = (data) => async dispatch=>{
     })
     .then(res => {
         localStorage.setItem('token', res.data.token);
-        const info= {
-            error:"Invalid username or password",
-            status:402
-        }
-        dispatch(setError(info))
         dispatch(checkUser(data));
     })
     .catch(err => {

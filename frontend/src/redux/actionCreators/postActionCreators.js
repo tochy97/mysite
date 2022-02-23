@@ -24,6 +24,11 @@ export const fetchPosts = () => async dispatch => {
     })
     .then((res) => {
         dispatch(setPost(res.data));
+        const info= {
+            error:null,
+            status:101
+        }
+        dispatch(setError(info));
     })
     .catch(err => {
         const info= {
@@ -43,6 +48,11 @@ export const fetchPostsNoUser = () => async dispatch => {
     })
     .then((res) => {
         dispatch(setPost(res.data));
+        const info= {
+            error:null,
+            status:101
+        }
+        dispatch(setError(info));
     })
     .catch(err => {
         const info= {

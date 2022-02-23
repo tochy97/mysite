@@ -9,30 +9,22 @@ function Login() {
     const [password, setPassword] = useState(""); 
     const [passwordShown, setPasswordShown] = useState(false);
  
-    const { status, error } = useSelector(
+    const { error } = useSelector(
       (state) =>({
-        status:state.auth.status, 
         error:state.auth.error,
     }), shallowEqual);
     
     const dispatch = useDispatch();
     const histroy = useNavigate();
     
-    const togglePassword = (e) => {
-        e.preventDefault()
-      // When the handler is invoked
-      // inverse the boolean state of passwordShown
-      setPasswordShown(!passwordShown);
-      return;
-    };
-    
     const handleSubmit = (e) => {
+        e.preventDefault()
         const data = {
             username: username,
             password: password
         }
         dispatch(loginUser(data));
-        if(!status)
+        if(!error)
         {
             histroy("../", {replace:true});
         }
@@ -45,7 +37,7 @@ function Login() {
         <div class="grid gap-4 grid-cols-6 w-full">
             <p class="text-7xl text-center col-start-2 col-span-4">Login</p>         
             <form class="col-span-6 grid gap-4 grid-cols-6" onSubmit={handleSubmit}>
-                <input class="border border-gray-300 rounded py-3 px-4 mb-3 lg:col-start-3 lg:col-span-2 col-start-2 col-span-4" type="text" id="user" name="user" placeholder='Username or Email' value={username} onChange={e => setUsername(e.target.value)}/>
+                <input class="border border-gray-300 rounded py-3 px-4 mb-3 lg:col-start-3 lg:col-span-2 col-start-2 col-span-4" type="text" id="user" name="user" placeholder='Username' value={username} onChange={e => setUsername(e.target.value)}/>
                 <div class="lg:col-start-3 lg:col-span-2 col-start-2 col-span-4 flex border-2 border-gray-200 hover:border-gray-300 rounded">
                     <input type={passwordShown ? "text" : "password"}  class="px-4 py-2 w-64 flex-1" placeholder="Password" value={password} onChange={e => setPassword(e.target.value)}/>
                     <div class="flex-none p-3" onClick={e=>setPasswordShown(!passwordShown)}>

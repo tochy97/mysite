@@ -20,7 +20,7 @@ function Add(props) {
         toolbar: {
             container: [
                 [{ 'header': [1, 2, 3, 4, 5, 6, false] }],  
-                [{ 'color': [] }]  
+                [{ 'color': [] }],
                 ['bold', 'italic', 'underline'],  
                 [{ 'list': 'ordered' }, { 'list': 'bullet' }],  
                 [{ 'align': [] }],  

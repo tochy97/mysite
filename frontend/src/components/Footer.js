@@ -1,25 +1,44 @@
 import React from 'react';
-import useCollapse from 'react-collapsed';
-import { MdKeyboardArrowDown } from "react-icons/md";
+import { BsGithub } from "react-icons/bs";
+import { ImLinkedin } from "react-icons/im";
+import { Link } from 'react-router-dom';
 
 function Footer() {
-    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
     return (
-        <footer id="footer" class="fixed bottom-0 left-0 right-0 w-full bg-white border-solid border-t-2 border-gray-300 grid grid-col-1 z-20 transition ease-in-out delay-150">
-                <div class="justify-self-center" {...getToggleProps()}>
-                    {isExpanded ? <MdKeyboardArrowDown size="3em"/>: <div class="p-3">Click to Search</div>}
+        <footer id="footer" class="fixed bottom-0 left-0 right-0 w-full bg-gray-200 text-black border-solid border-t-2 border-gray-300 grid grid-col-3 gap-1 z-20 transition ease-in-out delay-150 justify-items-center">
+            <div class="col-start-1 col-span-1 w-full grid grid-col-1 justify-items-center  my-1">
+                <div class="w-full">
+                    <p class="font-bold my-2 text-center underline underline-offset-8">My links</p>
+                    <hr class="mx-24 my-2"/>
                 </div>
-                <div {...getCollapseProps()}>
-                    <div class="col-start-6 lg:flex my-5 lg:items-center lg:justify-center ">
-                        <p class="text-2xl mx-5">Search for a blog (by description, title, keywords in content): </p>
-                        <div class="mx-5 flex border-2 border-gray-200 hover:border-gray-300 rounded">
-                            <input type="text" class="px-4 py-2 w-64" placeholder="Search..."/>
-                            <button class="px-4 border-l hover:border-gray-300 hover:underline underline-offset-4 bg-white">
-                                Search
-                            </button>
-                        </div>
+                <div class="col-start-1 col-span-1 w-9 flex flex-col">
+                    <a href='https://github.com/tochy97' target="_blank" rel="noreferrer"><BsGithub class="text-3xl my-1 hover:text-blue-500"/></a>
+                    <a href='https://www.linkedin.com/in/tochukwu-egeonu-79935a127/' target="_blank" rel="noreferrer"><ImLinkedin class="text-3xl hover:text-blue-500"/></a>
+                </div>
+            </div>
+            <div class="col-start-2 col-span-1 w-full  grid grid-col-1 justify-items-center  my-1">
+                <div class="col-start-1 col-span-1 w-full flex flex-col">
+                    <div class="w-full">
+                        <p class="font-bold my-2 text-center underline underline-offset-8">Other Projects</p>
+                        <hr class="mx-24 my-2"/>
+                    </div>
+                    <div class="mx-28 flex flex-col">
+                        <a href='https://blogutacse.web.app/' class="hover:underline text-center" target="_blank" rel="noreferrer">My site: Verion 1</a>
+                        <a href='https://shotsbyabs.com/' class="hover:underline text-center" target="_blank" rel="noreferrer">Shotsbyabs</a>
                     </div>
                 </div>
+            </div>
+            <div class="col-start-3 col-span-1 w-full  grid grid-col-1 justify-items-center my-1">
+                <div class="col-start-1 col-span-1 w-full flex flex-col">
+                    <div class="w-full">
+                        <p class="font-bold my-2 text-center underline underline-offset-8">Quick Access</p>
+                        <hr class="mx-24 my-2"/>
+                    </div>
+                    <div class="mx-28 flex flex-col">
+                        <Link to="../../contact" class="hover:underline whitespace-nowrap text-center">Contact Me</Link>
+                    </div>
+                </div>
+            </div>
         </footer>
     );
 }

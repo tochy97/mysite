@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallowEqual, useDispatch, useSelector } from 'react-redux';
+import { shallowEqual, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import Loading from '../Error/Loading';
 import Blog from './Blog';
