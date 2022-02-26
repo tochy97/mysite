@@ -22,7 +22,7 @@ export const setAllowed = (data)=>({
 })
 
 export const checkUser = ()  => async dispatch=>{
-    await axios.get('http://184.72.214.114:8000/currentuser/', {
+    await axios.get('http://54.85.226.96:8000/currentuser/', {
         headers: {
             Authorization: `JWT ${localStorage.getItem('token')}`,
         }
@@ -55,7 +55,7 @@ export const checkUser = ()  => async dispatch=>{
 
 export const loginUser = (data) => async dispatch=>{
     const formData = JSON.stringify(data)
-    await axios.post("http://184.72.214.114:8000/auth/", formData, {
+    await axios.post("http://54.85.226.96:8000/auth/", formData, {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -77,7 +77,7 @@ export const loginUser = (data) => async dispatch=>{
 
 export const createUser = (data) =>  async dispatch=>{
     const formData = JSON.stringify(data)
-    await axios.post("http://184.72.214.114:8000/createuser/", formData, {
+    await axios.post("http://54.85.226.96:8000/createuser/", formData, {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -104,7 +104,7 @@ export const logoutUser = () => dispatch=>{
 
 export const updateUser = ( data, id ) => async dispatch => {
     const form_data = JSON.stringify(data)
-    await axios.put(`http://184.72.214.114:8000/userapi/${id}/`, form_data, {
+    await axios.put(`http://54.85.226.96:8000/userapi/${id}/`, form_data, {
         headers:{
             Authorization: `JWT ${localStorage.getItem('token')}`,
             'Content-Type': 'application/json',
