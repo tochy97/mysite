@@ -14,6 +14,10 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from datetime import timedelta
 from pathlib import Path
 import environ
+import pymysql
+import rest_framework_jwt
+
+pymysql.install_as_MySQLdb()
 env = environ.Env()
 environ.Env.read_env()
 
@@ -30,8 +34,9 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
+SECURE_SSL_REDIRECT = True
 
 # Application definition
 
@@ -47,12 +52,7 @@ INSTALLED_APPS = [
     'api'
 ]
 
-CORS_ALLOWED_ORIGINS = [
-"https://domain.com",
-"https://api.domain.com",
-"http://localhost:3000",
-"http://127.0.0.1:3000"
-]
+CORS_ALLOW_ALL_ORIGINS = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -102,8 +102,15 @@ WSGI_APPLICATION = 'root.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE':       env('DB_ENGINE'),
+        'NAME':         env('DB_NAME'),
+        'USER':         env('DB_USER'),
+        'PASSWORD':     env('DB_PASSWORD'),
+        'HOST':         env('DB_HOST'),
+        'PORT':         env('DB_PORT'),
+        "OPTIONS": {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 

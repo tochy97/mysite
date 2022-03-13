@@ -37,7 +37,7 @@ function Manage() {
                 posts && user && user.admin
                 ?
                     posts.map((pst, index) => (
-                            <div id="preview" class="max-h-96 min-h-96 overflow-hidden border-solid border-4 border-gray-300 rounded bg-gray-300 flex flex-col">
+                            <div id="preview" class="max-h-96 min-h-96 overflow-hidden border-solid border-4 border-gray-300 rounded bg-gray-300 flex flex-col text-black">
                                 <div class="w-full bg-white grid grid-col-2">
                                     <IoTrashBin class="cursor-pointer col-span-1 col-start-1 hover:text-red-500 bg-white justify-self-start" size="3em" onClick={() => deletePost(pst.id)}/>
                                     <Link class="col-span-1 col-start-2 justify-self-end" to={`../edit/${pst.id}`}><RiEdit2Fill class="col-span-1 col-start-2 hover:text-blue-500 bg-white" size="3em"/></Link>
@@ -49,7 +49,7 @@ function Manage() {
                 myPost && myPost.length > 0
                 ?
                     myPost.map((pst, index) => (
-                            <div id="preview" class="max-h-96 min-h-96 overflow-hidden border-solid border-4 border-gray-300 rounded bg-gray-300 flex flex-col">
+                            <div id="preview" class="max-h-96 min-h-96 overflow-hidden border-solid border-4 border-gray-300 rounded bg-gray-300 flex flex-col text-black">
                                 <div class="w-full bg-white grid grid-col-2">
                                     <IoTrashBin class="cursor-pointer col-span-1 col-start-1 hover:text-red-500 bg-white justify-self-start" size="3em" onClick={() => deletePost(pst.id)}/>
                                     <Link class="col-span-1 col-start-2 justify-self-end" to={`../edit/${pst.id}`}><RiEdit2Fill class="col-span-1 col-start-2 hover:text-blue-500 bg-white" size="3em"/></Link>

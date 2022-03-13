@@ -59,7 +59,7 @@ function Edit(props) {
         <form onSubmit={handleSubmit} class="grid grid-col-1">
             <input class="border border-gray-300 rounded py-3 px-4 mb-3" type="text" id="title" name="title"  placeholder="Title" value={title} onChange={e => setTitle(e.target.value)}/>
             <textarea class="border border-gray-300 rounded py-3 px-4 mb-3" type="text" id="description" name="description" placeholder="Description" value={description} onChange={e => setDescription(e.target.value)}/>
-            <div class="z-0 h-48">
+            <div class="z-0 h-96">
                 <ReactQuill
                     theme='snow'
                     modules={modules}

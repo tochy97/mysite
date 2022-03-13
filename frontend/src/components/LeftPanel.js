@@ -19,7 +19,7 @@ function LeftPanel() {
             user
             ?
                 <OutsideClickHandler onOutsideClick={() => { setExpanded(false) }}>
-                    <div id="left-panel" class="fixed left-0 flex-none w-auto border-r-2 border-solid border-gray-200 top-20 h-full z-10 bg-gray-100 text-black grid grid-col-2 shadow-xl">
+                    <div id="left-panel" class="fixed left-0 flex-none w-auto border-r-2 border-solid border-gray-200 top-20 h-full z-10 bg-black text-white grid grid-col-2 shadow-xl">
                         <div id="left-panel-content" class="col-start-1 col-span-1 flex flex-col mt-10"  {...getCollapseProps()}>
                             <div id="left-panel-content-1">
                                 <Link to="/add" class="text-xl p-5 whitespace-nowrap hover:underline underline-offset-4">Add Blog</Link>

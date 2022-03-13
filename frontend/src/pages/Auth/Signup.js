@@ -94,7 +94,7 @@ function Signup() {
         }
         if(!error)
         {
-            histroy("../", {replace:true});
+            histroy("../home", {replace:true});
         }
     }
 

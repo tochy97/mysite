@@ -17,6 +17,7 @@ import { fetchPostsNoUser } from "./redux/actionCreators/postActionCreators";
 import Manage from "./pages/Admin/Manage";
 import Edit from "./pages/Admin/Edit";
 import Contact from "./pages/Dashboard/Contact";
+import Success from "./pages/Error/Success";
 
 function App() {
   const dispatch = useDispatch();    
@@ -40,7 +41,7 @@ function App() {
 
   return (
     <>
-      <main class="lg:m-36 my-36 m-10 self-start content-start flex-wrap">{
+      <main class="lg:m-36 my-36 p-5 self-start content-start flex-wrap">{
       <BrowserRouter>
         <NavComp/>
         <LeftPanel/>
@@ -63,6 +64,7 @@ function App() {
               <Route path="edit/*" element={<Edit/>}/>
               <Route path="contact" element={<Contact/>}/>
               <Route path="/*" element={<NotFound/>}/>
+              <Route path="/success" element={<Success/>}/>
             </Routes>
           :
             <Routes>
@@ -73,6 +75,7 @@ function App() {
               <Route path="blog/*" element={<Blog/>}/>
               <Route path="contact" element={<Contact/>}/>
               <Route path="/*" element={<NotFound/>}/>
+              <Route path="/success" element={<Success/>}/>
             </Routes>
         }
       </BrowserRouter>}
