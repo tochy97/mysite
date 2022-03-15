@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
     return (
-        <footer id="footer" class="fixed bottom-0 left-0 right-0 w-full bg-black text-white border-solid border-t-2 border-gray-300 grid grid-cols-3 gap-1 z-20 transition ease-in-out delay-150 justify-items-center">
+        <footer id="footer" class="fixed bottom-0 left-0 right-0 w-full bg-gray-500 text-white border-solid border-t-2 border-gray-300 grid grid-cols-3 gap-1 z-20 transition ease-in-out delay-150 justify-items-center">
             <div class="col-start-1 col-span-1 w-full grid grid-col-1 justify-items-center  my-1">
                 <div class="w-full">
                     <p class="font-bold my-2 text-center">My links</p>
@@ -23,7 +23,7 @@ function Footer() {
                         <hr class="lg:mx-24 my-2"/>
                     </div>
                     <div class="lg:mx-28 flex flex-col">
-                        <a href='https://blogutacse.web.app/' class="hover:underline text-center" target="_blank" rel="noreferrer">My site: Verion 1</a>
+                        <a href='https://blogutacse.web.app/' class="hover:underline text-center" target="_blank" rel="noreferrer">Blog Site</a>
                         <a href='https://shotsbyabs.com/' class="hover:underline text-center" target="_blank" rel="noreferrer">Shotsbyabs</a>
                     </div>
                 </div>
@@ -36,6 +36,7 @@ function Footer() {
                     </div>
                     <div class="lg:mx-28 flex flex-col">
                         <Link to="../../contact" class="hover:underline whitespace-nowrap text-center">Contact Me</Link>
+                        <Link to="../../about" class="hover:underline whitespace-nowrap text-center">About</Link>
                     </div>
                 </div>
             </div>
