@@ -9,9 +9,9 @@ function Login() {
     const [password, setPassword] = useState(""); 
     const [passwordShown, setPasswordShown] = useState(false);
  
-    const { status } = useSelector(
+    const { error } = useSelector(
       (state) =>({
-        status:state.auth.status,
+        error:state.auth.error,
     }), shallowEqual);
     
     const dispatch = useDispatch();
@@ -24,7 +24,7 @@ function Login() {
             password: password
         }
         dispatch(loginUser(data));
-        if(status === 101)
+        if(!error)
         {
             histroy("../", {replace:true});
         }

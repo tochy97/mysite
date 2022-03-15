@@ -92,7 +92,7 @@ function Signup() {
         else{
             dispatch(createUser(data));
         }
-        if(status === 101)
+        if(!error)
         {
             histroy("../home", {replace:true});
         }
