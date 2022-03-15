@@ -21,7 +21,7 @@ function Blog(props) {
     }, [posts,postId,setMyPost,myPost]);
 
     return (
-        <>
+        <div>
         {
             props.post
             ?
@@ -70,7 +70,7 @@ function Blog(props) {
                 <Loading/>
 
         }
-        </>
+        </div>
     );
 }
 

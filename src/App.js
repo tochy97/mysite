@@ -1,4 +1,3 @@
-import NavComp from "./components/NavComp";
 import Login from "./pages/Auth/Login";
 import Signup from "./pages/Auth/Signup";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -12,12 +11,14 @@ import { useState, useEffect } from "react";
 import { checkUser, setMount } from "./redux/actionCreators/authActionCreators";
 import LoggedIn from "./pages/Error/LoggedIn";
 import Loading from "./pages/Error/Loading";
-import LeftPanel from "./components/LeftPanel";
 import { fetchPostsNoUser } from "./redux/actionCreators/postActionCreators";
 import Manage from "./pages/Admin/Manage";
 import Edit from "./pages/Admin/Edit";
 import Contact from "./pages/Dashboard/Contact";
 import Success from "./pages/Error/Success";
+import SubNav from "./components/Nav/SubNav";
+import Nav from "./components/Nav/Nav";
+import About from "./pages/Dashboard/About";
 
 function App() {
   const dispatch = useDispatch();    
@@ -43,8 +44,7 @@ function App() {
     <>
       <main class="lg:m-36 my-36 p-5 self-start content-start flex-wrap">{
       <BrowserRouter>
-        <NavComp/>
-        <LeftPanel/>
+        <Nav/>
         <Footer/>
         {
           !mounted
@@ -53,19 +53,23 @@ function App() {
           :
           isLoggedIn
           ?
-            <Routes>
-              <Route path="/" element={<Dashboard/>}/>
-              <Route path="home" element={<Dashboard/>}/>
-              <Route path="login" element={<LoggedIn/>}/>
-              <Route path="signup" element={<LoggedIn/>}/>
-              <Route path="blog/*" element={<Blog/>}/>
-              <Route path="add" element={<Add/>}/>
-              <Route path="manage" element={<Manage/>}/>
-              <Route path="edit/*" element={<Edit/>}/>
-              <Route path="contact" element={<Contact/>}/>
-              <Route path="/*" element={<NotFound/>}/>
-              <Route path="/success" element={<Success/>}/>
-            </Routes>
+            <>
+              <SubNav/>
+              <Routes>
+                <Route path="/" element={<Dashboard/>}/>
+                <Route path="home" element={<Dashboard/>}/>
+                <Route path="login" element={<LoggedIn/>}/>
+                <Route path="signup" element={<LoggedIn/>}/>
+                <Route path="blog/*" element={<Blog/>}/>
+                <Route path="add" element={<Add/>}/>
+                <Route path="manage" element={<Manage/>}/>
+                <Route path="edit/*" element={<Edit/>}/>
+                <Route path="contact" element={<Contact/>}/>
+                <Route path="/*" element={<NotFound/>}/>
+                <Route path="/success" element={<Success/>}/>
+                <Route path="/about" element={<About/>}/>
+              </Routes>
+            </>
           :
             <Routes>
               <Route path="/" element={<Login/>}/>
@@ -76,6 +80,7 @@ function App() {
               <Route path="contact" element={<Contact/>}/>
               <Route path="/*" element={<NotFound/>}/>
               <Route path="/success" element={<Success/>}/>
+                <Route path="/about" element={<About/>}/>
             </Routes>
         }
       </BrowserRouter>}
