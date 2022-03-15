@@ -16,7 +16,7 @@ export const setMount = (data)=>({
 })
 
 export const fetchPosts = () => async dispatch => {
-    await axios.get("http://54.85.226.96:8000/posts/", {
+    await axios.get("https://tochyegeonu.online/posts/", {
         headers:{
             'Content-Type': 'application/json',
             Authorization: `JWT ${localStorage.getItem('token')}`,
@@ -41,7 +41,7 @@ export const fetchPosts = () => async dispatch => {
 }
 
 export const fetchPostsNoUser = () => async dispatch => {
-    await axios.get("http://54.85.226.96:8000/posts/", {
+    await axios.get("https://tochyegeonu.online/posts/", {
         headers:{
             'Content-Type': 'application/json',
         }
@@ -66,7 +66,7 @@ export const fetchPostsNoUser = () => async dispatch => {
 
 export const newPost = ( data ) => async dispatch => {
     const form_data = JSON.stringify(data)
-    await axios.post("http://54.85.226.96:8000/posts/", form_data, {
+    await axios.post("https://tochyegeonu.online/posts/", form_data, {
         headers:{
             Authorization: `JWT ${localStorage.getItem('token')}`,
             'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ export const newPost = ( data ) => async dispatch => {
 }
 
 export const removePost = ( postID ) => async dispatch => {
-    await axios.delete(`http://54.85.226.96:8000/posts/${postID}/`, {
+    await axios.delete(`https://tochyegeonu.online/posts/${postID}/`, {
         headers:{
             'Content-Type': 'application/json',
             Authorization: `JWT ${localStorage.getItem('token')}`,
@@ -107,7 +107,7 @@ export const removePost = ( postID ) => async dispatch => {
 
 export const editPost = ( data, id ) => async dispatch => {
     const form_data = JSON.stringify(data)
-    await axios.put(`http://54.85.226.96:8000/posts/${id}/`, form_data, {
+    await axios.put(`https://tochyegeonu.online/posts/${id}/`, form_data, {
         headers:{
             'Content-Type': 'application/json',
             Authorization: `JWT ${localStorage.getItem('token')}`,

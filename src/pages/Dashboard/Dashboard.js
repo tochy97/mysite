@@ -12,7 +12,7 @@ function Dashboard(props) {
     }), shallowEqual);
 
     return (
-        <div id="dashboard" class="grid grid-row gap-14 z-0">
+        <div id="dashboard" class="grid grid-row gap-14 z-0 ">
             {
                 posts
                 ?
