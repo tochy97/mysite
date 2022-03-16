@@ -37,11 +37,9 @@ function Blog(props) {
                     </div>
                     <div id="blog-content" class="border-b-2 border-solid border-gray-400">
                         {
-                            !window.location.pathname.includes("manage")
-                            ?
+                            !window.location.pathname.includes("manage") && !window.location.pathname.includes("home")
+                            &&
                             <ReactQuill value={props.post.content || ''} readOnly={true} theme={"bubble"}/>
-                            :
-                            <></>
                         }
                     </div>
                 </div>
@@ -59,11 +57,15 @@ function Blog(props) {
                         <p class="pt-1 pb-3 px-3">Description: {myPost.description}</p>
                     </div>
                     <div id="blog-content" class="border-b-2 border-solid border-gray-400">
-                        <ReactQuill 
-                            value={myPost.content || ''} 
-                            readOnly={true} 
-                            theme={"bubble"}
-                        />
+                        {
+                            !window.location.pathname.includes("manage") && !window.location.pathname.includes("home")
+                            &&
+                            <ReactQuill 
+                                value={myPost.content || ''} 
+                                readOnly={true} 
+                                theme={"bubble"}
+                            />
+                        }
                     </div>
                 </div>
             :

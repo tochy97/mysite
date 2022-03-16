@@ -12,13 +12,13 @@ function Dashboard(props) {
     }), shallowEqual);
 
     return (
-        <div id="dashboard" class="grid grid-row gap-14 z-0 ">
+        <div id="dashboard" class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-14 z-0 ">
             {
                 posts
                 ?
                     posts.map((pst, index) => (
                         <Link to={`../blog/${pst.id}`}>
-                            <div id="preview" class="max-h-96 overflow-hidden border-solid border-4 border-gray-300 rounded hover:shadow-2xl hover:border-gray-400 cursor-pointer transition duration-500 ">
+                            <div id="preview" class="col-span-1 max-h-96 overflow-hidden border-solid border-4 border-gray-300 rounded hover:shadow-2xl hover:border-gray-400 cursor-pointer transition duration-500 ">
                                 <Blog post={pst}/>
                             </div>
                         </Link>

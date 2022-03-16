@@ -32,7 +32,7 @@ function Manage() {
     }
 
     return (
-        <div id="dashboard" class="grid xl:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-14 z-0">
+        <div id="dashboard" class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-14 z-0">
             {
                 posts && user && user.admin
                 ?

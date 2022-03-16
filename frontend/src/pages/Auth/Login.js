@@ -45,7 +45,6 @@ function Login() {
                     </div>
                 </div>
                 <button type='submit' class="border border-gray-300 rounded py-3 mb-3 lg:col-start-3 lg:col-span-2 col-start-2 col-span-4 hover:border-2 hover:underline underline-offset-8">Login</button>
-                <p class="lg:col-start-3 lg:col-span-2 col-start-2 col-span-4">Need an account - <Link to="../signup" class="hover:underline">Signup</Link></p>
             </form>
         </div>
     );

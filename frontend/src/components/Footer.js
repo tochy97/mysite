@@ -23,7 +23,7 @@ function Footer() {
                         <hr class="lg:mx-24 my-2"/>
                     </div>
                     <div class="lg:mx-28 flex flex-col">
-                        <a href='https://blogutacse.web.app/' class="hover:underline text-center" target="_blank" rel="noreferrer">Blog Site</a>
+                        <a href='https://blogutacse.web.app/' class="hover:underline text-center" target="_blank" rel="noreferrer">Blog App</a>
                         <a href='https://shotsbyabs.com/' class="hover:underline text-center" target="_blank" rel="noreferrer">Shotsbyabs</a>
                     </div>
                 </div>
