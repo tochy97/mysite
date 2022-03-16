@@ -159,5 +159,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': timedelta(seconds=1800),
+    'JWT_EXPIRATION_DELTA': timedelta(None),
 }
