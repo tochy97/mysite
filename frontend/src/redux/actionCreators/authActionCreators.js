@@ -81,7 +81,7 @@ export const loginUser = (data) => async dispatch => {
 
 export const createUser = (data) => async dispatch => {
     const formData = JSON.stringify(data)
-    await axios.post("http://127.0.0.1:8000/createuser/", formData, {
+    await axios.post("https://tochyegeonu.online/createuser/", formData, {
         headers: {
             'Content-Type': 'application/json',
         },
@@ -132,7 +132,7 @@ export const sendEmail = (data) => async dispatch => {
         subject: data.subject,
         message: data.message
     })
-    await axios.post('http://127.0.0.1:8000/sendemail/', form_data, {
+    await axios.post('https://tochyegeonu.online/sendemail/', form_data, {
         headders: {
             'Content-Type': 'application/json',
         }

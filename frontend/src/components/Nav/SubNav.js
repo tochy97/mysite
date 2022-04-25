@@ -12,7 +12,18 @@ function SubNav() {
         }), shallowEqual);
     return (
         <div id="nav" class="mb-3 opacity-80 left-0 right-0 w-full bg-white-400 text-black border-solid border-b-2 border-gray-300 shadow-md z-10">
-            <Collapsible trigger={<div className='w-full flex justify-center'><MdArrowDropDown size={30} /></div>} triggerWhenOpen={<div className='w-full flex justify-center'><MdArrowDropUp size={30} /></div>}>
+            <Collapsible
+                trigger={
+                    <div className='w-full flex justify-center hover:text-neutral-500'>
+                        <MdArrowDropDown size={30} />
+                    </div>
+                }
+                triggerWhenOpen={
+                    <div className='w-full flex justify-center hover:text-neutral-500'>
+                        <MdArrowDropUp size={30} />
+                    </div>
+                }
+            >
                 <div class='my-3'>
                     <Link to="/tutorials" class="mx-8 hover:underline underline-offset-4">View Tutorials</Link>
                     <Link to="/contact" class="mx-8 hover:underline whitespace-nowrap ">Contact Me</Link>
