@@ -1,12 +1,32 @@
 import React from 'react';
+import { shallowEqual, useSelector } from 'react-redux';
+import Collapsible from 'react-collapsible';
 import { Link } from 'react-router-dom';
+import { MdArrowDropDown, MdArrowDropUp } from 'react-icons/md';
 
-function SubNav(props) {
+function SubNav() {
+
+    const { isLoggedIn } = useSelector(
+        (state) => ({
+            isLoggedIn: state.auth.isLoggedIn,
+        }), shallowEqual);
     return (
-        <nav id="nav" class="fixed top-20 left-0 right-0 w-full opacity-100 bg-gray-400 text-white border-solid border-b-2 border-gray-300 shadow-md py-3 my-4 z-10">
-            <Link to="/add" class="mx-8 hover:underline underline-offset-4">Add Blog</Link>
-            <Link to="/manage" class="mx-8 hover:underline underline-offset-4">Manage Blogs</Link>
-        </nav>
+        <div id="nav" class="mb-3 opacity-80 left-0 right-0 w-full bg-white-400 text-black border-solid border-b-2 border-gray-300 shadow-md z-10">
+            <Collapsible trigger={<div className='w-full flex justify-center'><MdArrowDropDown size={30} /></div>} triggerWhenOpen={<div className='w-full flex justify-center'><MdArrowDropUp size={30} /></div>}>
+                <div class='my-3'>
+                    <Link to="/tutorials" class="mx-8 hover:underline underline-offset-4">View Tutorials</Link>
+                    <Link to="/contact" class="mx-8 hover:underline whitespace-nowrap ">Contact Me</Link>
+                    {
+                        isLoggedIn
+                        &&
+                        <>
+                            <Link to="/add" class="mx-8 hover:underline underline-offset-4">Add Blog</Link>
+                            <Link to="/manage" class="mx-8 hover:underline underline-offset-4">Manage Blogs</Link>
+                        </>
+                    }
+                </div>
+            </Collapsible>
+        </div>
     );
 }
 
