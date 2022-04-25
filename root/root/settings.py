@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from datetime import timedelta
 from pathlib import Path
-from pickle import TRUE
-import django
 import environ
 import pymysql
 import rest_framework_jwt
@@ -38,7 +36,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-SECURE_SSL_REDIRECT = False
+SECURE_SSL_REDIRECT = True
 
 # Application definition
 
@@ -75,8 +73,8 @@ REST_FRAMEWORK = {
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         'rest_framework.authentication.BasicAuthentication',
-    ),
-}
+    ),  
+}  
 
 ROOT_URLCONF = 'root.urls'
 
@@ -98,16 +96,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'root.wsgi.application'
 
-# EMAIL
-# email account: tochyegeonu97@gmail.com
-# app password: jnwhwuhhonyftmhz
-
-EMAIL_BACKEND = 'django.core.mail.backends.SMTP.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_HOST_USER = 'tochyegeonu97@gmail.com'
-EMAIL_HOST_PASSWORD = 'jnwhwuhhonyftmhz'
-EMAIL_USE_TLS = True
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -171,12 +159,5 @@ STATIC_URL = '/static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JWT_AUTH = {
-    'JWT_EXPIRATION_DELTA': timedelta(seconds=99999999),
+    'JWT_EXPIRATION_DELTA': timedelta(None),
 }
-
-EMAIL_BACKEND = env('EMAIL_BACKEND')
-EMAIL_HOST = env('EMAIL_HOST')
-EMAIL_USE_TLS = True
-EMAIL_PORT = 587
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
